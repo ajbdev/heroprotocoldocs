@@ -1,57 +1,33 @@
 import React, { Component } from 'react'
-import heroprotocol, { MPQArchive } from 'heroprotocol'
-import axios from 'axios'
+import {Layout,Sidebar,Content,SidebarList,SidebarListItem} from './Styles'
+import Home from './Home'
+import Playground from './Playground'
 import './App.css'
-import JsonView from 'react-json-view'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
-class App extends Component {
-  constructor() {
-    super()
 
-    this.state = { 
-      replay: null,
-      parts: [ 
-        heroprotocol.ATTRIBUTES_EVENTS,
-        heroprotocol.DETAILS,
-        heroprotocol.GAME_EVENTS,
-        heroprotocol.HEADER,
-        heroprotocol.INITDATA,
-        heroprotocol.MESSAGE_EVENTS,
-        heroprotocol.TRACKER_EVENTS
-      ]
-    }
-  }
-  componentDidMount() {
-    axios.get('Garden of Terror (122).StormReplay', { responseType: 'arraybuffer' }).then((resp) => {
 
-      const buffer = Buffer.from(resp.data)
-      const archive = new MPQArchive(buffer)
-
-      const parts = this.state.parts
-      const data = {}
-
-      for (let p in parts) {
-        try {
-          data[parts[p]] = heroprotocol.get(parts[p], archive)
-        } catch(ex) {
-          console.log(ex)
-        }
-      }
-      console.log(data)
-
-      this.setState({ replay: data})
-    }, (err) => {
-      
-    })
-  }
+export default class extends Component {
   render() {
     return (
-      <div className="App">
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
-        {this.state.replay ? <JsonView src={this.state.replay} displayDataTypes={false} theme="hopscotch" collapsed={true} /> : null}
-      </div>
+      <Router>
+        <Layout>
+          <Sidebar>
+            <ul className="sidebar">
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/playground">Playground</Link></li>
+            </ul>
+          </Sidebar>
+          <Content>
+            <Route path="/home" component={Home}/>
+            <Route path="/playground" component={Playground}/>
+          </Content>
+        </Layout>
+      </Router>
     )
   }
 }
-
-export default App

@@ -25,3 +25,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.sidebar {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.sidebar a {
+  padding: 4px 10px;
+  display: block;
+  color: #f6f6f6;
+}
