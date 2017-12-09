@@ -6,6 +6,8 @@
     "axios": "^0.17.1",
     "bufferpack": "^0.0.6",
     "heroprotocol": "nexus-devtools/heroprotocol",
+    "html-loader": "^0.5.1",
+    "markdown-loader": "^2.0.1",
     "object-depth": "^0.0.3",
     "object-sizeof": "^1.2.0",
     "react": "^16.1.1",

@@ -1,38 +1,37 @@
 import styled from 'styled-components'
 
-let white = '#fafafa';
-const colors = {
-    white: '#fafafa'
-}
 
 export const Button = styled.button`
     display: inline-block;
-    border: 2px solid ${white};
-    color: ${white};
-    background: transparent;
+    color: #fff;
+    background: #745b8c;
+    border: none;
     border-radius: 5px;
     min-height: 30px;
     vertical-align: middle;
-    margin: 2px;
-    padding: 4px 8px;
+    margin: 0 8px 0 0;
+    padding: 4px 12px;
     cursor: pointer;
     outline: none;
     user-select: none;
+    &:hover {
+        background: #ba95de;
+    }
 `
 
 export const Layout = styled.div`
-    background: '#222';
-    color: ${white};
 `
 
 export const Content = styled.div`
     margin-left: 250px;
-    padding: 10px;
+    width: 800px;
+    padding: 20px 40px;
+    color: #302935;
+    background: #fdfbff;
 `
-
 export const Sidebar = styled.div`
     font-size: 13px;
-    background: #333;
+    background: #352d3c;
     overflow: auto;
     position: fixed;
     height: 100vh;
@@ -42,3 +41,27 @@ export const Sidebar = styled.div`
     width: 250px;
     display: block;
 `
+export const SideTitle = styled.div`
+    background: #0099ff;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    font-family: Arvo;
+    font-size: 15px;
+
+    & > div {
+        font-family: Lato;
+        text-transform: uppercase;
+        margin-top:10px;
+    }
+
+    & > img {
+        width: 50px;
+        height: 50px;
+        margin-top: 20px;
+        display: block;
+        margin: 10px auto 0 auto;
+    }
+`
+
