@@ -1,36 +1,38 @@
 import React, { Component } from 'react'
 import {Layout,Sidebar,Content,SideTitle} from './Styles'
-import Home from './Home'
 import Playground from './Playground'
 import logo from './logo.svg'
 import Document from './Document'
 import {
   BrowserRouter as Router,
   Route,
+  DefaultRoute,
+  NavLink,
   Link
 } from 'react-router-dom'
-import { TableOfContents } from './TableOfContents'
+import Home from './Home'
+import TableOfContents from './TableOfContents'
 
 export default class extends Component {
   render() {
     return (
       <Router>
         <Layout>
-        <link href="https://fonts.googleapis.com/css?family=Arvo:400,700|Lato:400,400i,700" rel="stylesheet" />
         <Sidebar>
           <SideTitle>
             Heroes of the Storm
-            <img src={logo} />
+            <Link to="/"><img src={logo} /></Link>
             <div>Protocol Documentation</div>
           </SideTitle>
-          <TableOfContents />
-          <ul className="sidebar">
-            <li><Link to="/playground">Playground</Link></li>
+          <ul>
+            <li><NavLink to="/">Introduction</NavLink></li>
+            <TableOfContents LinkElement={NavLink} />
+            <li><NavLink to="/playground">Playground</NavLink></li>
           </ul>
         </Sidebar>
         <Content>
+          <Route path="/" exact component={Home} />
           <Route path="/docs/:doc" component={Document} />
-          <Route path="/home" component={Home}/>
           <Route path="/playground" component={Playground}/>
         </Content>
         </Layout>

@@ -10,9 +10,19 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
   font-family: Arvo, sans-serif;
+  color: #0a3e61;
 }
 
 a {
   color: #fff;
   text-decoration: none;
+}
+
+.CodeMirror  {
+  border-radius: 5px;
+}
+
+.react-json-view {
+  border-radius: 5px;
+  padding: 2px 6px;
 }

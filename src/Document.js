@@ -1,15 +1,13 @@
 import React, {Component} from 'react'
+import docs from './docs'
 
 export default class extends Component {
     render() {
-        console.log(this.props)
+        const markdown = docs[this.props.match.params.doc]
 
-        import doc from `./docs/${this.props.match.params.doc}.md`
 
         return (
-            <div>
-                Hello Intro
-            </div>
+            <div dangerouslySetInnerHTML={{__html: markdown}} />
         )
     }
 }

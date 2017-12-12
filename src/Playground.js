@@ -74,9 +74,7 @@ export default class extends Component {
             return
         }
 
-        const code = `
-      return ${this.state.code}
-    `
+        const code = `return ${this.state.code}`
 
         let result = this.state.result
         try {

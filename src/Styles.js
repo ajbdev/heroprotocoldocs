@@ -26,11 +26,17 @@ export const Content = styled.div`
     margin-left: 250px;
     width: 800px;
     padding: 20px 40px;
-    color: #302935;
+    color: #231c27;
     background: #fdfbff;
+    & a {
+        color: #231c27;
+        text-decoration: underline;
+        &:hover {
+            color: #64556d;
+        }
+    }
 `
 export const Sidebar = styled.div`
-    font-size: 13px;
     background: #352d3c;
     overflow: auto;
     position: fixed;
@@ -40,6 +46,23 @@ export const Sidebar = styled.div`
     bottom: 0px;
     width: 250px;
     display: block;
+    user-select: none;
+
+    & ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        margin-top: 8px;
+        & li {
+            a {
+                display: block;
+                padding: 6px 12px;
+                &:hover {
+                    background: #5a4f63;
+                }
+            }
+        }
+    }
 `
 export const SideTitle = styled.div`
     background: #0099ff;
@@ -56,7 +79,7 @@ export const SideTitle = styled.div`
         margin-top:10px;
     }
 
-    & > img {
+    & img {
         width: 50px;
         height: 50px;
         margin-top: 20px;
