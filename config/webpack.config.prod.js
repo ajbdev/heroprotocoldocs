@@ -153,6 +153,17 @@ module.exports = {
               compact: true,
             },
           },
+          {
+            test: /\.md$/,
+            use: [
+              {
+                  loader: "html-loader"
+              },
+              {
+                  loader: "markdown-loader"
+              }
+            ]
+          },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
