@@ -4,7 +4,7 @@ import Playground from './Playground'
 import logo from './logo.svg'
 import Document from './Document'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   DefaultRoute,
   NavLink,
