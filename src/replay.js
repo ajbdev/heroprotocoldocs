@@ -4,8 +4,12 @@ const replay = {
     obj: {},
     onChange: (replay) => {},
 
-    get: () => {
-        return replay.obj
+    get: (part) => {
+        if (replay.obj[part]) {
+            return replay.obj[part]
+        }
+
+        return {}
     },
 
     set: (json) => {

@@ -42,10 +42,6 @@ The .StormReplay files contain all the game events necessary to watch a complete
 
 ![Always drink your ovaltine](https://i.imgur.com/jvnneLX.gif)
 
+Opening the MPQ archive is just the first part: once the replay file is opened, it must be decoded from a binary format into something that makes sense of the events and information it contains. Luckily, Blizzard has thrown us a bone here: Blizzard open sourced their Heroes of the Storm StormReplay file protocol decoder so we can understand the information within it. You can find it at: https://github.com/Blizzard/heroprotocol
 
-Opening the MPQ archive is just the first part: once the replay file is opened, it must be decoded from a binary format into something that makes sense of the events and information it contains. Luckily, Blizzard has thrown us a bone here. For whatever reason, and contrary to most game developers within the last decade or so, Blizzard has open sourced their Heroes of the Storm StormReplay file protocol decoder so we can understand the information within it. You can find it at: https://github.com/Blizzard/heroprotocol
-
-It's in Python, though, which may or may not work for you. Luckily, there's been some astounding people that have made other protocol decoders:
-- Barret77 C#'s parser 
-- heroprotocoljs
-
+Take a look at [File Formats & Tools]() to learn about other tools that can be used on StormReplay files. 
