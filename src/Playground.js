@@ -14,21 +14,16 @@ export default class extends Component {
         super()
 
         this.state = {
-            replay: null,
             result: null,
             collapsed: true,
             code: this.getDefaultCode(),
-            parts: [
-                heroprotocol.ATTRIBUTES_EVENTS,
-                heroprotocol.DETAILS,
-                heroprotocol.GAME_EVENTS,
-                heroprotocol.HEADER,
-                heroprotocol.INITDATA,
-                heroprotocol.MESSAGE_EVENTS,
-                heroprotocol.TRACKER_EVENTS
-            ]
         }
     }
+
+    componentDidMount() {
+        this.runCode()
+    }
+
     getDefaultCode() {
         return `function get(replay) {
   // Example usage (shows player names):
@@ -39,38 +34,9 @@ export default class extends Component {
 }
 `
     }
-    componentDidMount() {
-        axios
-            .get('Garden of Terror (122).StormReplay', {responseType: 'arraybuffer'})
-            .then((resp) => {
-                this.loadReplay(resp.data)
-            }, (err) => {})
-    }
-
-    loadReplay(rawData) {
-        const buffer = Buffer.from(rawData)
-        const archive = new MPQArchive(buffer)
-
-        const parts = this.state.parts
-        const data = {}
-
-        for (let p in parts) {
-            try {
-                data[parts[p]] = heroprotocol.get(parts[p], archive)
-            } catch (ex) {
-                console.log(ex)
-            }
-        }
-
-        this.setState({
-            replay: data
-        }, () => {
-            this.runCode()
-        })
-    }
 
     runCode() {
-        if (!this.state.replay) {
+        if (!this.props.replay) {
             return
         }
 
@@ -78,7 +44,7 @@ export default class extends Component {
 
         let result = this.state.result
         try {
-            result = new Function('replay', code)()(this.state.replay)
+            result = new Function('replay', code)()(this.props.replay)
         } catch (ex) {
             result = {
                 error: ex.message
@@ -103,27 +69,6 @@ export default class extends Component {
             : 'CTRL';
     }
 
-    handleUpload(evt) {
-        const files = evt.target.files
-
-        if (files.length === 0) {
-            return
-        }
-
-        const reader = new FileReader();
-
-        const loadReplay = this
-            .loadReplay
-            .bind(this)
-
-        reader.onload = function (e) {
-            const file = reader.result
-            loadReplay(file)
-        }
-
-        reader.readAsArrayBuffer(files[0])
-
-    }
     render() {
         return (
             <div>
@@ -132,9 +77,7 @@ export default class extends Component {
                     .runCode
                     .bind(this)}>▶ Run ({this.runKey()}+S)</Button>
                 <UploadReplay
-                    onChange={this
-                    .handleUpload
-                    .bind(this)}/>
+                    onChange={this.props.upload}/>
                 <Repl
                     code={this.state.code}
                     onChange={(code) => {

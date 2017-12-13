@@ -18,7 +18,11 @@ export default class extends Component {
                 This site also contains a javascript based replay decoder that you can use right in your browser (and upload your own replays to explore).{' '}
                 <Link to="/playground">Take a look at the playground</Link> to run the decoder in your browser.
 
+                <br /><br />
+                <b>Note: </b> this site requires a modern browser to show the example replay data. This site has only been tested Chrome 63 and Firefox 57. If you can see this notice, it will probably work for you.
 
+                <h2>Contributing to this documentation</h2>
+                Fork this repo: and modify any of the markdown files in the <code>src/docs</code> folder.    
             </div>
         )
     }
