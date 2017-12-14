@@ -157,10 +157,10 @@ module.exports = {
             test: /\.md$/,
             use: [
               {
-                  loader: "html-loader"
+                  loader: require.resolve('babel-loader')
               },
               {
-                  loader: "markdown-loader"
+                  loader: "react-markdown-component-loader"
               }
             ]
           },
