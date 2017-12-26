@@ -2300,6 +2300,14 @@ emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
 
+empeeku@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/empeeku/-/empeeku-1.0.2.tgz#0fcc2004b6f81eb275b9bd8aa43ef15ac0a9776c"
+  dependencies:
+    long "^3.0.3"
+    seek-bzip "^1.0.5"
+    yargs "^3.32.0"
+
 encodeurl@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.1.tgz#79e3d58655346909fe6f0f45a5de68103b294d20"
@@ -3329,14 +3337,13 @@ he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
-heroprotocol@nexus-devtools/heroprotocol:
-  version "0.4.0"
-  resolved "https://codeload.github.com/nexus-devtools/heroprotocol/tar.gz/32aff288aa9a941365ff14925f409c5d6a50d07d"
+"heroprotocol@file:../heroprotocol":
+  version "1.0.0"
   dependencies:
     download-github-repo "^0.1.3"
+    empeeku "^1.0.2"
     fs-extra "^0.26.7"
     long "^3.0.3"
-    mpyqjs "^1.0.1"
     yargs "^3.32.0"
 
 highlight.js@^9.9.0:
@@ -4695,14 +4702,6 @@ mkdirp@^0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.3.5.tgz#de3e5f8961c88c787ee1368df849ac4413eca8d7"
 
-mpyqjs@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mpyqjs/-/mpyqjs-1.0.1.tgz#a2bb7e257a27b2dbeea9d5569897d2ebd0fcd116"
-  dependencies:
-    long "^3.0.3"
-    seek-bzip "^1.0.5"
-    yargs "^3.32.0"
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -5741,7 +5740,7 @@ react-error-overlay@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
 "react-json-view@file:../react-json-view":
-  version "1.13.3"
+  version "1.14.1"
   dependencies:
     flux "^3.1.3"
     react-base16-styling "^0.5.3"

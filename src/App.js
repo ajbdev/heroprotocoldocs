@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Layout,Sidebar,Content,SideTitle} from './Styles'
 import Playground from './Playground'
 import logo from './logo.svg'
-import replayContainer from './replay'
+import parser from './parser'
 import Document from './Document'
 import {
   HashRouter as Router,
@@ -13,27 +13,18 @@ import {
 } from 'react-router-dom'
 import Home from './Home'
 import TableOfContents from './TableOfContents'
-import heroprotocol, {MPQArchive} from 'heroprotocol'
+import {MPQArchive} from 'heroprotocol'
 import axios from 'axios'
 
 export default class extends Component {
   constructor() {
     super()
     this.state = { replay: null }
-    this.parts = [
-        heroprotocol.ATTRIBUTES_EVENTS,
-        heroprotocol.DETAILS,
-        heroprotocol.GAME_EVENTS,
-        heroprotocol.HEADER,
-        heroprotocol.INITDATA,
-        heroprotocol.MESSAGE_EVENTS,
-        heroprotocol.TRACKER_EVENTS
-    ]
   }
 
   componentDidMount() {
-    replayContainer.onChange = (file) => {
-      this.setState({ replay: file })
+    parser.onChange = (mpq) => {
+      this.setState({ replay: mpq })
     }
     axios
         .get('Garden of Terror (122).StormReplay', {responseType: 'arraybuffer'})
@@ -45,19 +36,7 @@ export default class extends Component {
   loadReplay(rawData) {
     const buffer = Buffer.from(rawData)
     const archive = new MPQArchive(buffer)
-
-    const parts = this.parts
-    const data = {}
-
-    for (let p in parts) {
-        try {
-            data[parts[p]] = heroprotocol.get(parts[p], archive)
-        } catch (ex) {
-            console.log(ex)
-        }
-    }
-
-    replayContainer.set(data)
+    parser.archive = archive
   }
 
   handleUpload(evt) {

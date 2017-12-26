@@ -16,6 +16,7 @@ h1,h2,h3,h4,h5,h6 {
 a {
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .CodeMirror  {
@@ -30,4 +31,14 @@ a {
 code {
   background: #e4e3e4;
   padding: 2px 4px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table td {
+  background: #e9e6ea;
+  padding: 6px;
+  border: 1px solid #ccc;
 }
